@@ -8,19 +8,19 @@ if(galleryImages){
             let getElementCss = window.getComputedStyle(image);
             let getFullImgUrl = getElementCss.getPropertyValue("background-image");
             let getImgUrlPos = getFullImgUrl.split("/img/thumbs/");
-            let setNewImgUrl = getImgUrlPos[1].replace('")','');
+            let setNewImgUrl = getImgUrlPos[1].replace('")', '');
 
             getLatestOpenedImg = index + 1;
 
             let container = document.body;
             let newImgWindow = document.createElement("div");
             container.appendChild(newImgWindow);
-            newImgWindow.setAttribute("class","img-window");
-            newImgWindow.setAttribute("onclick","closeImg()");
+            newImgWindow.setAttribute("class", "img-window");
+            newImgWindow.setAttribute("onclick", "closeImg()");
 
             let newImg = document.createElement("img");
             newImgWindow.appendChild(newImg);
-            newImg.setAttribute("src", "img/" + setNewImgUrl);
+            newImg.setAttribute("src", "img/thumbs/" + setNewImgUrl);
             newImg.setAttribute("id", "current-img");
 
             newImg.onload = function(){
@@ -73,7 +73,7 @@ function changeImg(changeDir){
         }
     }
 
-    newImg.setAttribute("src", "img/img" + calcNewImg + ".jpg");
+    newImg.setAttribute("src", "img/thumbs/img" + calcNewImg + ".jpg");
     newImg.setAttribute("id", "current-img");
 
     getLatestOpenedImg = calcNewImg;
@@ -83,10 +83,10 @@ function changeImg(changeDir){
         let calcImgToEdge = ((windowWidth - imgWidth)/2) - 80;
 
         let nextBtn = document.querySelector(".img-btn-next");
-        nextBtn.style.cssText = "right: " + calcImgToEdge + "px:";
+        nextBtn.style.cssText = "right: " + calcImgToEdge + "px;";
 
         let prevBtn = document.querySelector(".img-btn-prev");
-        prevBtn.style.cssText = "left: " + calcImgToEdge + "px:";
+        prevBtn.style.cssText = "left: " + calcImgToEdge + "px;";
     }
 
 }
